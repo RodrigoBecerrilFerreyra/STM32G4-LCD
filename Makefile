@@ -49,7 +49,7 @@ LFLAGS += -T$(LSCRIPT)
 INCLUDE = ./inc/
 
 AS_SRC   = $(STARTUP_FILE)
-C_SRC    = ./main.c
+C_SRC    = ./src/main.c
 
 OBJS += $(AS_SRC:.s=.o)
 OBJS += $(C_SRC:.c=.o)
