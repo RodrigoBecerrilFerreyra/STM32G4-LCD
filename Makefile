@@ -5,6 +5,8 @@ TARGET = main
 LD_SCRIPT = STM32G431KBTX_FLASH.ld
 STARTUP_FILE = startup_stm32g431kbtx.s
 MCU_SPEC  = cortex-m4
+CHIP_NUMBER = STM32G431xx
+# Find the Chip Number in inc/stm32g4xx.h lines 106-125
 
 # Toolchain definitions (ARM bare metal defaults)
 TOOLCHAIN = /usr
@@ -59,7 +61,7 @@ all: $(TARGET).bin
 	$(CC) -x assembler-with-cpp $(ASFLAGS) $< -o $@
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) -I$(INCLUDE) $< -o $@
+	$(CC) -c $(CFLAGS) -I$(INCLUDE) -D$(CHIP_NUMBER) $< -o $@
 
 $(TARGET).elf: $(OBJS)
 	$(CC) $^ $(LFLAGS) -o $@

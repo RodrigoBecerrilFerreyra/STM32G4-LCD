@@ -7,13 +7,14 @@ This repository serves as a template for starting projects with the STM32G431KB 
 
 # Licensing
 
-The following files are licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0):
+The following files are licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) (included as LICENSE-2.0.txt):
 
  - inc/cmsis_compiler.h
  - inc/cmsis_gcc.h
  - inc/cmsis_version.h
  - inc/core_cm4.h
  - inc/mpu_armv7.h
+ - /inc/stm32g4xx.h
  - inc/stm32g431xx.h
  - inc/system_stm32g4xx.h
  - startup_stm32g431kbtx.s
