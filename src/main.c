@@ -1,16 +1,14 @@
-#include <stdint.h>
-#include <stdbool.h>
 #include "stm32g4xx.h"
 int main(void)
 {
-    RCC->AHB2ENR |= 0x02; // enable Port B
-    GPIOB->MODER &= ~0x00000003; GPIOB->MODER |= 0x00000001; // PB0 output
+    RCC->AHB2ENR |= 0x01; // enable Port A
+    GPIOA->MODER &= ~0x0C00; GPIOA->MODER |= 0x0400; // PA5 output
 
     while(1)
     {
-        GPIOB->ODR |= 0x01;
+        GPIOA->ODR |= 0x20;
         for(unsigned int timer = 0; timer < 2000000; ++timer);
-        GPIOB->ODR &= ~0x01;
+        GPIOA->ODR &= ~0x20;
         for(unsigned int timer = 0; timer < 2000000; ++timer);
     }
 }
