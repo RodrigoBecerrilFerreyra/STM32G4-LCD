@@ -1,8 +1,12 @@
 #include "stm32g4xx.h"
+
+void initialize_gpio(void);
+void initialize_spi(void);
+
 int main(void)
 {
-    RCC->AHB2ENR |= 0x01; // enable Port A
-    GPIOA->MODER &= ~0x0C00; GPIOA->MODER |= 0x0400; // PA5 output
+    initialize_gpio();
+    initialize_spi();
 
     while(1)
     {
@@ -11,4 +15,15 @@ int main(void)
         GPIOA->ODR &= ~0x20;
         for(unsigned int timer = 0; timer < 2000000; ++timer);
     }
+}
+
+void initialize_gpio(void)
+{
+    RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN; // enable Port A
+    GPIOA->MODER &= ~GPIO_MODER_MODE5_Msk; GPIOA->MODER |= GPIO_MODER_MODE5_0; // PA5 output
+}
+
+void initialize_spi(void)
+{
+    
 }
